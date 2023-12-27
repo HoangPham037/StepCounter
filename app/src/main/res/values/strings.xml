@@ -1,0 +1,96 @@
+<resources>
+    <string name="app_name">Step Count</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="setting">Settings</string>
+    <string name="profile_settings">Profile Settings</string>
+    <string name="statistics">Statistics</string>
+    <string name="achievements">Achievements</string>
+    <string name="your_level">Your level</string>
+    <string name="level_one">1</string>
+    <string name="sumStep">300/500</string>
+    <string name="history_of_the_gps_training">History of the GPS training</string>
+    <string name="goal_for_the_number_of_steps">Goal for the number of steps</string>
+    <string name="month">Month</string>
+    <string name="sum_steps">30.000</string>
+    <string name="steps">STEPS</string>
+    <string name="km">KM</string>
+    <string name="sum_km">100</string>
+    <string name="sum_kcal">3200</string>
+    <string name="kcal">Kcal</string>
+    <string name="minute">m</string>
+    <string name="hour">h</string>
+    <string name="result_minute">50</string>
+    <string name="result_hour">2</string>
+    <string name="time">TIME</string>
+    <string name="calories">Calories</string>
+    <string name="distance">Distance</string>
+    <string name="welcome">WELCOME</string>
+    <string name="home">Home</string>
+    <string name="achieve">Achieve</string>
+    <string name="profile">Profile</string>
+    <string name="gender">Gender</string>
+    <string name="step_length">Step length</string>
+    <string name="height">Height</string>
+    <string name="weight">Weight</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
+    <string name="choice_your_gender">Choice your gender</string>
+    <string name="kg">Kg</string>
+    <string name="cm">Cm</string>
+    <string name="skip_it_save">Skip it, save it for later...</string>
+    <string name="start">START</string>
+    <string name="female">FeMale</string>
+    <string name="other">Other</string>
+    <string name="male">Male</string>
+    <string name="change_later">You can change the following information on your Profile</string>
+    <string name="click_to_select">Click to select</string>
+    <string name="update_necessary_information">Update necessary information</string>
+    <string name="step_count">STEP COUNT</string>
+
+    <string-array name="choice_gender">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Undefined</item>
+    </string-array>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="your_goal">Your goal</string>
+    <string name="version">Version 1.0 by Hoang Ltd</string>
+
+    <string name="start_time">Start Time: %s</string>
+    <string name="end_time">End Time: %s</string>
+    <string name="pause">PAUSE</string>
+    <string name="save">Save</string>
+    <string name="start_over">start over</string>
+    <string name="history">History</string>
+    <string name="empty_data">Empty data</string>
+    <string name="sum_of_steps">Sum of steps</string>
+    <string name="walk">Walk</string>
+    <string name="training">Training</string>
+    <string name="start_gps_training">START TRAINING</string>
+    <string name="pause_gps_training">PAUSE TRAINING</string>
+    <string name="finish_training">FINISH TRAINING</string>
+    <string name="sum">Sum</string>
+    <string name="stop">STOP</string>
+    <string name="off">OFF</string>
+    <string name="dark_mode">Dark mode</string>
+    <string name="gps_training">Gps Training</string>
+    <string name="gps_training_result">GPS Training result</string>
+    <string name="time_default">00:00:00:00</string>
+    <string name="this_week">This Week</string>
+    <string name="see_more">More</string>
+    <string name="statistics_details">Statistics details</string>
+    <string name="text_default">text default text default text default text default text default text default text default text default</string>
+    <string name="dis_kcal">Energy Expended for this Day</string>
+    <string name="action_time">Action time</string>
+
+    <string name="google_map_api_key" translatable="false">AIzaSyAO2oqZkcSJBLuOnlKQ3JCASLxSuOK1ySY</string>
+    <string name="weekly">Weekly</string>
+    <string name="value_default">0</string>
+    <string name="_50k">50k</string>
+    <string name="_10k">10k</string>
+    <string name="_100k">100k</string>
+    <string name="_70k">70k</string>
+    <string name="level">Level</string>
+    <string name="finish">finish</string>
+</resources>

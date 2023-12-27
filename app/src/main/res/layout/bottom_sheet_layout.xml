@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_bg">
+
+    <RelativeLayout
+        android:id="@+id/block_btn"
+        android:layout_marginTop="10dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cancel"
+            android:textColor="@color/bg_gray"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:textColor="@color/bg_green"
+            android:textStyle="bold"
+            android:textSize="14dp"
+            android:layout_alignParentEnd="true"
+            android:gravity="end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/save"
+            android:id="@+id/tv_save"/>
+    </RelativeLayout>
+
+    <NumberPicker
+        android:theme="@style/AppTheme.Picker"
+        android:layout_below="@+id/block_btn"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/numberPicker"/>
+</RelativeLayout>

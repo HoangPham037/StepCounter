@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <dimen name="free_size">0dp</dimen>
+    <dimen name="_10dp">10dp</dimen>
+    <dimen name="_8dp">8sp</dimen>
+    <dimen name="text_size_version">10dp</dimen>
+    <dimen name="text_size_12sp">12sp</dimen>
+    <dimen name="text_size_14sp">14sp</dimen>
+    <dimen name="text_size">16sp</dimen>
+    <dimen name="text_size_18dp">18sp</dimen>
+    <dimen name="text_size_title">25sp</dimen>
+    <dimen name="text_size_30dp">30sp</dimen>
+    <dimen name="_30dp">30dp</dimen>
+</resources>

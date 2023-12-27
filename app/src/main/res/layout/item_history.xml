@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/BLOCK"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="5dp"
+    app:cardCornerRadius="5dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp">
+
+            <TextView
+                android:id="@+id/date"
+                style="@style/TEXT_TITLE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/img_history"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_below="@+id/header"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/empty_box" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/header"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@+id/img_history"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_title"
+                style="@style/TEXT_TITLE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/walk" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_sum_km"
+                    style="@style/TEXT_HEADER"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0,00" />
+
+                <TextView
+                    style="@style/TEXT_TITLE"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:text="@string/km" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <TextView
+                    android:id="@+id/tv_time_history"
+                    style="@style/TEXT_COVER"
+                    android:layout_width="@dimen/free_size"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="00:00:10" />
+
+                <TextView
+                    android:id="@+id/tv_sum_kcal"
+                    style="@style/TEXT_COVER"
+                    android:layout_width="@dimen/free_size"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="0.012" />
+
+                <TextView
+                    android:id="@+id/tv_sum_step"
+                    style="@style/TEXT_COVER"
+                    android:layout_width="@dimen/free_size"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="5000" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

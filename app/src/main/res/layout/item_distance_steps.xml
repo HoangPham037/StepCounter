@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutContainer"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:gravity="center">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/view_bgr"
+            android:layout_width="70dp"
+            android:layout_height="90dp"
+            android:background="@drawable/custom_bgr_gray_item"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="60dp"
+            android:layout_height="80dp"
+            android:background="@drawable/custom_border_item_achieve"
+            app:layout_constraintBottom_toBottomOf="@+id/view_bgr"
+            app:layout_constraintEnd_toEndOf="@+id/view_bgr"
+            app:layout_constraintStart_toStartOf="@+id/view_bgr"
+            app:layout_constraintTop_toTopOf="@+id/view_bgr" />
+
+        <LinearLayout
+            android:id="@+id/layout_daily"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="@+id/view2"
+            app:layout_constraintEnd_toEndOf="@+id/view2"
+            app:layout_constraintStart_toStartOf="@+id/view2"
+            app:layout_constraintTop_toTopOf="@+id/view2"
+            app:layout_constraintVertical_bias="0.05">
+
+            <TextView
+                android:id="@+id/tv_distances"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                tools:text="41" />
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_speed_24"
+            app:layout_constraintEnd_toEndOf="@+id/layout_daily"
+            app:layout_constraintStart_toStartOf="@+id/layout_daily"
+            app:layout_constraintTop_toBottomOf="@+id/layout_daily"
+            app:tint="@color/bg_dark_gray" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

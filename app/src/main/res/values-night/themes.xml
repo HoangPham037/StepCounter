@@ -1,0 +1,92 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.StepCount" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/purple_200</item>
+        <item name="colorPrimaryVariant">@color/black</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_200</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <!--Dark mode -->
+    <!--Screen background if Dark mode on -->
+    <style name="SCREEN">
+        <item name="android:background">#000000</item>
+    </style>
+    <style name="BLOCK">
+        <item name="android:backgroundTint">#363753</item>
+    </style>
+    <style name="BLOCK_HISTORY">
+        <item name="android:background">#363753</item>
+    </style>
+    <!--Text title background if dark mode on -->
+    <style name="TEXT_HEADER">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">@dimen/text_size_title</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!--Text header setting background if dark mode on -->
+    <style name="TEXT_HEADER_SETTING">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">@dimen/text_size_title</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+    <!--Text title background if dark mode on -->
+    <style name="TEXT_TITLE">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">@dimen/text_size</item>
+    </style>
+
+    <style name="PROGRESSBAR">
+        <item name="cpb_background_progressbar_color">@color/white</item>
+        <item name="cpb_background_progressbar_width">15dp</item>
+        <item name="cpb_progressbar_color">@color/bg_blue</item>
+        <item name="cpb_progressbar_width">14dp</item>
+        <item name="cpb_round_border">true</item>
+    </style>
+    <!--Text cover background if light mode on -->
+    <style name="TEXT_COVER">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">@dimen/text_size_12sp</item>
+    </style>
+    <style name="BUTTON">
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/bg_button_blue</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/text_size</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="BUTTON_NAVIGATION">
+        <item name="android:background">@color/color_text_title</item>
+        <item name="itemBackground">@color/color_text_title</item>
+        <item name="itemIconTint">@color/bg_blue</item>
+        <item name="itemTextColor">@color/bg_blue</item>
+    </style>
+
+    <style name="BUTTON_POPUP_SHOW">
+        <item name="android:background">@drawable/border_select_more</item>
+        <item name="android:src">@drawable/add_circle_24_blue</item>
+    </style>
+    <style name="BUTTON_POPUP_HIDE">
+        <item name="android:background">@drawable/border_select_more</item>
+        <item name="android:src">@drawable/cancel_24_blue</item>
+    </style>
+
+    <!-- BUTTON_POPUP_HIDE background if light mode on -->
+    <style name="BARCHART_REPORT">
+        <item name="chart_axis">x</item>
+        <item name="chart_barsRadius">4dp</item>
+        <item name="chart_barsColor">@color/bg_blue</item>
+        <item name="chart_labelsColor">#ffffff</item>
+        <item name="chart_labelsSize">@dimen/text_size_version</item>
+        <item name="chart_spacing">15dp</item>
+    </style>
+</resources>

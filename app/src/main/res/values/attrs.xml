@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ChartProgressBar">
+        <attr name="MaxValue" format="float"/>
+        <attr name="BarWidth" format="dimension"/>
+        <attr name="BarHeight" format="dimension"/>
+        <attr name="EmptyColor" format="color"/>
+        <attr name="ProgressColor" format="color"/>
+        <attr name="ProgressDisableColor" format="color"/>
+        <attr name="ProgressClickColor" format="color"/>
+        <attr name="BarRadius" format="dimension"/>
+        <attr name="PinTextColor" format="color"/>
+        <attr name="PinBackgroundColor" format="color"/>
+        <attr name="PinPaddingTop" format="dimension"/>
+        <attr name="PinPaddingBottom" format="dimension"/>
+        <attr name="PinPaddingEnd" format="dimension"/>
+        <attr name="PinPaddingStart" format="dimension"/>
+        <attr name="BarCanBeClick" format="boolean"/>
+        <attr name="BarTitleColor" format="color"/>
+        <attr name="BarTitleMarginTop" format="dimension"/>
+        <attr name="BarTitleTxtSize" format="dimension"/>
+        <attr name="PinTxtSize" format="dimension"/>
+        <attr name="PinMarginTop" format="dimension"/>
+        <attr name="PinMarginBottom" format="dimension"/>
+        <attr name="PinMarginEnd" format="dimension"/>
+        <attr name="PinMarginStart" format="dimension"/>
+        <attr name="PinDrawable" format="integer"/>
+        <attr name="BarTitleSelectedColor" format="color"/>
+        <attr name="BarCanBeToggle" format="boolean"/>
+    </declare-styleable>
+</resources>
