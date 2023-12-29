@@ -1,8 +1,11 @@
 package com.example.stepcount.ui.mainfragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.viewpager2.widget.ViewPager2
+import com.example.stepcount.Constant.ACTION_OPEN_HOME_FRAGMENT
+import com.example.stepcount.Constant.ACTION_SHOW_TRACKING_FRAGMENT
 import com.example.stepcount.Constant.IndexPage.indexFive
 import com.example.stepcount.Constant.IndexPage.indexFour
 import com.example.stepcount.Constant.IndexPage.indexOne
@@ -47,9 +50,13 @@ class MainFragment : BaseFragment<FragmentMainBinding>(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewPagerAdapter = ViewPagerAdapter(childFragmentManager, lifecycle)
-        binding.viewpagerManager.adapter = viewPagerAdapter
-        binding.viewpagerManager.isUserInputEnabled = false
+        binding.viewpagerManager.apply {
+            offscreenPageLimit = 5
+            adapter = viewPagerAdapter
+            isUserInputEnabled = false
+        }
         binding.bottomNav.setOnItemSelectedListener(mOnNavigationItemSelectedListener)
+        getIntent(activity?.intent)
         binding.viewpagerManager.registerOnPageChangeCallback(object :
             ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
@@ -63,5 +70,19 @@ class MainFragment : BaseFragment<FragmentMainBinding>(
                 }
             }
         })
+    }
+
+    private fun getIntent(intent: Intent?) {
+        when (intent?.action) {
+            ACTION_SHOW_TRACKING_FRAGMENT -> {
+                binding.viewpagerManager.setCurrentItem(indexFour, false)
+                binding.bottomNav.menu.findItem(R.id.gpsFragment).isChecked = true
+            }
+
+            ACTION_OPEN_HOME_FRAGMENT -> {
+                binding.viewpagerManager.setCurrentItem(indexOne, false)
+                binding.bottomNav.menu.findItem(R.id.homeFragment).isChecked = true
+            }
+        }
     }
 }

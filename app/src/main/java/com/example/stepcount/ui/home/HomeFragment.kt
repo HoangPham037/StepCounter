@@ -32,14 +32,19 @@ import com.example.stepcount.databinding.DialogSelectMoreBinding
 import com.example.stepcount.databinding.FragmentHomeBinding
 import com.example.stepcount.service.StepCountService
 import com.example.stepcount.ui.home.adapter.SuccessAdapter
+import com.example.stepcount.ui.main.MainActivity
 import com.example.stepcount.ui.mainfragment.MainFragment
 import com.google.android.flexbox.AlignItems
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.text.DateFormat
 import java.util.*
+import kotlin.math.log
 
 
 class HomeFragment :
@@ -99,9 +104,9 @@ class HomeFragment :
             val distance = calculateDistance(currentStep.toFloat())
             val time = calculateTime(currentStep.toInt(), distance)
             binding.sumSteps.text = currentStep.toInt().toString()
-            binding.sumCalories.text = formatDisplayFloat(calories, "kcal")
+            binding.sumCalories.text = String.format("%.2f %s", calories, "Kcal").replace(",", ".")
             binding.tvTime.text = formatDisplayFloat(time.toFloat(), "HH:mm")
-            binding.tvDistance.text = formatDisplayFloat(distance, "Km")
+            binding.tvDistance.text = String.format("%.2f %s", distance, "Km").replace(",", ".")
             binding.circleCenter.apply {
                 setProgressWithAnimation(currentStep.toFloat())
             }
@@ -110,7 +115,6 @@ class HomeFragment :
     private fun getCurrentTime(){
         val currentTime = Calendar.getInstance().time
         val formatTime = DateFormat.getDateInstance(DateFormat.FULL).format(currentTime)
-        Log.d("getCurrentTime", "getCurrentTime:  ${formatTime}")
         binding.tvToday.text = formatTime
     }
 
@@ -182,6 +186,7 @@ class HomeFragment :
                     binding.tvProgress.text = formatDisplayFloat((currentSteps / target) * 100, "%")
                     binding.goalSteps.text = formatGoal(goal.toInt())
                     binding.circleCenter.progressMax = target
+
                 }
             }
             if (userId != null) {
@@ -195,7 +200,7 @@ class HomeFragment :
     }
 
     override fun onResume() {
-        startForegroundService()
+//        startForegroundService()
         super.onResume()
         if (sensor == null) {
             Snackbar.make(binding.root, "This device has no sensor", Snackbar.LENGTH_SHORT).show()
@@ -431,7 +436,7 @@ class HomeFragment :
     }
 
     override fun onDetach() {
-        stopForegroundService()
+//        stopForegroundService()
         sensorManager?.unregisterListener(this)
         super.onDetach()
     }

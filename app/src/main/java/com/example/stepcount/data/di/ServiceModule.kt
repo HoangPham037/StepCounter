@@ -5,10 +5,8 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import androidx.core.app.NotificationCompat
-import com.example.stepcount.Constant.ACTION_OPEN_HOME_FRAGMENT
-import com.example.stepcount.Constant.ACTION_PAUSE_SERVICE
 import com.example.stepcount.Constant.ACTION_SHOW_TRACKING_FRAGMENT
-import com.example.stepcount.Constant.NOTIFICATION_CHANNEL_ID
+import com.example.stepcount.Constant.NOTIFICATION_CHANNEL_TRACKING_ID
 import com.example.stepcount.R
 import com.example.stepcount.ui.main.MainActivity
 import com.google.android.gms.location.LocationServices
@@ -24,7 +22,7 @@ fun provideMainActivityPendingIntent(context: Context): PendingIntent =
             context,
             0,
             Intent(context, MainActivity::class.java).also {
-                it.action = ACTION_OPEN_HOME_FRAGMENT
+                it.action = ACTION_SHOW_TRACKING_FRAGMENT
             },
             PendingIntent.FLAG_MUTABLE
         )
@@ -33,14 +31,14 @@ fun provideMainActivityPendingIntent(context: Context): PendingIntent =
             context,
             0,
             Intent(context, MainActivity::class.java).also {
-                it.action = ACTION_OPEN_HOME_FRAGMENT
+                it.action = ACTION_SHOW_TRACKING_FRAGMENT
             },
-            PendingIntent.FLAG_ONE_SHOT or PendingIntent.FLAG_IMMUTABLE
+            PendingIntent.FLAG_UPDATE_CURRENT
         )
     }
 
 fun provideBaseNotificationBuilder(context: Context, pendingIntent: PendingIntent) =
-    NotificationCompat.Builder(context, NOTIFICATION_CHANNEL_ID)
+    NotificationCompat.Builder(context, NOTIFICATION_CHANNEL_TRACKING_ID)
         .setAutoCancel(false)
         .setOngoing(true)
         .setSmallIcon(R.drawable.step_count_logo)

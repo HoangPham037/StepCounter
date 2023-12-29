@@ -7,10 +7,10 @@
     </item>
 
     <item android:id="@android:id/progress"
-        android:top="1dp"
-        android:bottom="1dp"
-        android:left="1dp"
-        android:right="1dp">
+        android:top="0dp"
+        android:bottom="0dp"
+        android:left="0dp"
+        android:right="0dp">
 
         <scale android:scaleWidth="100%">
             <shape>

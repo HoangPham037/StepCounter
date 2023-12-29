@@ -134,11 +134,4 @@ class StatisticsFragment : BaseFragment<FragmentStatisticsBinding>(
         }
         appViewModel.fetchItemStepsAll()
     }
-
-    override fun initEventOnClick() {
-        super.initEventOnClick()
-        binding.layoutLifeTime.setOnClickListener {
-            findNavController().navigate(R.id.action_statisticsFragment_to_detailReportFragment)
-        }
-    }
 }

@@ -62,7 +62,6 @@ class GpsFragment : BaseFragment<FragmentGpsBinding>(
 
     private fun subscribeObserver() {
         TrackingService.isTracking.observe(viewLifecycleOwner) {
-            Log.d("subscribeObserver", "subscribeObserver: $it")
             updateTracking(it)
         }
         TrackingService.pathPoints.observe(viewLifecycleOwner) {
@@ -99,7 +98,6 @@ class GpsFragment : BaseFragment<FragmentGpsBinding>(
 
     private fun updateTracking(isTracking: Boolean) {
         this.isTracking = isTracking
-        Log.d("updateTracking", "$isTracking")
         if (!isTracking) {
             binding.btnToggleRun.text = "Start"
             binding.btnFinishRun.visibility = View.VISIBLE
