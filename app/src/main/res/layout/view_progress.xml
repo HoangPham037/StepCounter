@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         app:cardElevation="64dp"
-        app:cardCornerRadius="4dp">
+        app:cardCornerRadius="20dp">
 
         <ProgressBar
             android:layout_width="wrap_content"

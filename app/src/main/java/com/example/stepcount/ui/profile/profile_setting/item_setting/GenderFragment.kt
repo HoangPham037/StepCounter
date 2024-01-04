@@ -1,6 +1,5 @@
 package com.example.stepcount.ui.profile.profile_setting.item_setting
 
-import android.app.AlertDialog
 import android.view.View
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -8,6 +7,8 @@ import com.example.stepcount.Constant
 import com.example.stepcount.base.BaseFragment
 import com.example.stepcount.containers.MyApplication
 import com.example.stepcount.databinding.FragmentGenderBinding
+import com.example.stepcount.ui.dialog.CustomDialog
+import com.example.stepcount.ui.dialog.OnCustomDialogListener
 
 /*
  created by Hoang.pv in 29/05.2023
@@ -15,7 +16,7 @@ import com.example.stepcount.databinding.FragmentGenderBinding
 
 class GenderFragment : BaseFragment<FragmentGenderBinding>(
     FragmentGenderBinding::inflate
-) {
+), OnCustomDialogListener {
     private val mGenderFragmentArgs: GenderFragmentArgs by navArgs()
     private var gender: String? = null
     private val genderArray = arrayOf("Male", "FeMale", "Others")
@@ -52,24 +53,25 @@ class GenderFragment : BaseFragment<FragmentGenderBinding>(
     }
 
     private fun showDialogAlertConfirm() {
-        val dialogShowAlert = AlertDialog.Builder(requireContext())
-        dialogShowAlert.setMessage("Do you want to save?")
-        dialogShowAlert.setPositiveButton("SAVE") { _, _ ->
-            updateGender()
-            findNavController().navigateUp()
-        }
-        dialogShowAlert.setNegativeButton("CANCEL") { dialog, _ ->
-            dialog.cancel()
-            findNavController().navigateUp()
-        }
-        dialogShowAlert.create().show()
+        val dialog = CustomDialog(requireContext())
+        dialog.setCancelable(false)
+        dialog.setCustomListener(this)
+        dialog.show()
     }
 
     private fun updateGender() {
         if (gender != mGenderFragmentArgs.gender) {
             val userId = MyApplication.loadData(Constant.KEY_USER_ID, Constant.VALUE_DEFAULT)
             appViewModel.updateGenderByUserId(userId.toLong(), gender!!)
-
         }
     }
+
+    override fun onBtnYesListener() {
+        updateGender()
+    }
+
+    override fun onNavigateToBack() {
+        findNavController().navigateUp()
+    }
+
 }

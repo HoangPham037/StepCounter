@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:background="@color/white">
+            android:background="@color/color_header">
 
             <ImageView
                 android:id="@+id/img_back_setting_profile"
@@ -31,20 +31,60 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:layout_margin="@dimen/_10dp"
+                android:layout_marginStart="@dimen/_10dp"
+                android:layout_marginTop="@dimen/_10dp"
+                android:layout_marginEnd="@dimen/_10dp"
+                android:layout_marginBottom="@dimen/_10dp"
                 android:text="@string/weight"
                 android:textAlignment="center" />
 
         </RelativeLayout>
 
-        <com.shawnlin.numberpicker.NumberPicker
-            android:id="@+id/numberPickerWeight"
-            android:layout_width="300dp"
-            android:layout_height="250dp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            app:np_selectedTextSize="@dimen/text_size"
-            app:np_textSize="@dimen/text_size_12sp" />
+            android:layout_centerVertical="true">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.shawnlin.numberpicker.NumberPicker
+                    android:id="@+id/number_picker_kg"
+                    android:layout_width="100dp"
+                    android:layout_height="250dp"
+                    android:layout_marginStart="104dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:np_dividerColor="@color/bg_blue"
+                    app:np_selectedTextColor="@color/color_progress"
+                    app:np_selectedTextSize="@dimen/text_size"
+                    app:np_textColor="@color/color_text_number_picker"
+                    app:np_textSize="@dimen/text_size_12sp"
+                    app:np_wheelItemCount="6" />
+
+                <com.shawnlin.numberpicker.NumberPicker
+                    android:id="@+id/number_picker_g"
+                    android:layout_width="100dp"
+                    android:layout_height="250dp"
+                    android:layout_marginEnd="112dp"
+                    app:np_dividerColor="@color/bg_blue"
+                    app:np_selectedTextColor="@color/color_progress"
+                    app:np_selectedTextSize="@dimen/text_size"
+                    app:np_textColor="@color/color_text_number_picker"
+                    app:np_textSize="@dimen/text_size_12sp"
+                    app:np_wheelItemCount="6" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         <TextView
             android:id="@+id/tvSave"

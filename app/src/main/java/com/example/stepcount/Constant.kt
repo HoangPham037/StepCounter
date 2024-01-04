@@ -48,6 +48,11 @@ object Constant {
     const val VALUE_DEFAULT = 0f
 
 
+    const val KEY_STEPS = "KEY_STEPS"
+    const val KEY_HEIGHT = "KEY_HEIGHT"
+    const val KEY_WEIGHT = "KEY_WEIGHT"
+    const val KEY_GOAL = "KEY_GOAL"
+
     object IndexPage {
         const val indexOne =  0
         const val indexTwo =  1

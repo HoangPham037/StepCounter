@@ -15,9 +15,7 @@
             android:id="@+id/layoutTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:background="@color/white"
+            android:background="@color/color_header"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -40,7 +38,7 @@
             android:layout_marginHorizontal="@dimen/_10dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/border_block_circle"
-            android:backgroundTint="@color/white"
+            style="@style/BGR_HEADER"
             android:padding="@dimen/_10dp">
 
 
@@ -56,7 +54,7 @@
                     android:id="@+id/tvSeeMoreYourLv"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
-                    android:background="@drawable/custom_view_level"
+                    style="@style/Custom_view_level"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -157,7 +155,7 @@
             android:layout_marginHorizontal="@dimen/_10dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/border_block_circle"
-            android:backgroundTint="@color/white"
+            style="@style/BLOCK"
             android:padding="@dimen/_10dp">
 
             <TextView
@@ -197,7 +195,7 @@
             android:layout_marginHorizontal="@dimen/_10dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/border_block_circle"
-            android:backgroundTint="@color/white"
+            style="@style/BLOCK"
             android:padding="@dimen/_10dp">
 
             <TextView

@@ -48,13 +48,23 @@
         <item name="android:backgroundTint">#FFFFFF</item>
     </style>
 
+    <style name="BGR_HEADER">
+        <item name="android:background">@color/bgr_app_light_mode</item>
+    </style>
+
     <style name="BLOCK_HISTORY">
         <item name="android:background">#FFFFFF</item>
     </style>
 
+    <style name="TEXT_STEP">
+        <item name="android:textColor">@color/color_text_title</item>
+        <item name="android:textSize">40sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <!--Text header background if light mode on -->
     <style name="TEXT_HEADER">
-        <item name="android:textColor">#363753</item>
+        <item name="android:textColor">@color/color_text_title</item>
         <item name="android:textSize">@dimen/text_size_title</item>
         <item name="android:textStyle">bold</item>
     </style>
@@ -112,7 +122,7 @@
     <!-- BUTTON_POPUP_SHOW background if light mode on -->
     <style name="BUTTON_POPUP_SHOW">
         <item name="android:background">@drawable/border_select_more</item>
-        <item name="android:src">@drawable/add_circle_24_green</item>
+        <item name="android:src">@drawable/add_circle_24_blue</item>
     </style>
 
     <!-- BUTTON_POPUP_HIDE background if light mode on -->
@@ -132,26 +142,27 @@
     </style>
 
     <style name="CustomVerticalProgress" parent="Widget.MaterialComponents.LinearProgressIndicator">
-
         <item name="android:progressDrawable">@drawable/custom_progress_light</item>
         <item name="android:indeterminateOnly">false</item>
     </style>
 
-    <style name="CustomText" parent="Widget.MaterialComponents.TextView">
+    <style name="Custom_view_level">
+        <item name="android:background">@drawable/custom_view_level</item>
+    </style>
 
+    <style name="CustomText" parent="Widget.MaterialComponents.TextView">\
         <item name="android:textSize">10sp</item>
         <item name="android:textColor">#043744</item>
         <item name="android:gravity">center</item>
     </style>
 
     <style name="CustomSuccessProgress" parent="Widget.MaterialComponents.CircularProgressIndicator">
-
         <item name="trackCornerRadius">20dp</item>
-        <item name="indicatorColor">#0288D1</item>
+        <item name="indicatorColor">#2196F3</item>
         <item name="android:rotation">-180</item>
         <item name="indicatorSize">30dp</item>
         <item name="trackThickness">3dp</item>
-        <item name="trackColor">#A3D6E1</item>
+        <item name="trackColor">#BBEEFA</item>
     </style>
 
     <style name="CustomCardView" parent="Widget.MaterialComponents.CardView">

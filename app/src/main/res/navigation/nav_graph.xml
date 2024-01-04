@@ -34,7 +34,8 @@
     <fragment
         android:id="@+id/settingProfileFragment"
         android:name="com.example.stepcount.ui.profile.profile_setting.SettingProfileFragment"
-        android:label="SettingProfileFragment" >
+        android:label="SettingProfileFragment"
+        tools:layout="@layout/fragment_setting_profile">
         <action
             android:id="@+id/action_settingProfileFragment_to_heightFragment"
             app:destination="@id/heightFragment"
@@ -145,7 +146,7 @@
         tools:layout="@layout/fragment_recommend_profile" >
         <action
             android:id="@+id/action_recommendProfileFragment_to_homeFragment"
-            app:destination="@id/homeFragment"
+            app:destination="@id/mainFragment"
             app:popUpToInclusive="false" />
     </fragment>
     <fragment

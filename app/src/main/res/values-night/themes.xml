@@ -19,9 +19,36 @@
     <style name="SCREEN">
         <item name="android:background">#000000</item>
     </style>
+
     <style name="BLOCK">
-        <item name="android:backgroundTint">#363753</item>
+        <item name="android:backgroundTint">@color/bgr_block_dark</item>
     </style>
+
+    <style name="CustomText" parent="Widget.MaterialComponents.TextView">\
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="CustomVerticalProgress" parent="Widget.MaterialComponents.LinearProgressIndicator">
+        <item name="android:progressDrawable">@drawable/custom_progress_dark</item>
+        <item name="android:indeterminateOnly">false</item>
+    </style>
+
+    <style name="BGR_HEADER">
+        <item name="android:background">@color/bgr_block_dark</item>
+    </style>
+
+    <style name="Custom_view_level">
+        <item name="android:background">@drawable/custom_view_level_dark</item>
+    </style>
+
+    <style name="TEXT_STEP">
+        <item name="android:textColor">#FF9800</item>
+        <item name="android:textSize">40sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="BLOCK_HISTORY">
         <item name="android:background">#363753</item>
     </style>
@@ -48,7 +75,7 @@
     <style name="PROGRESSBAR">
         <item name="cpb_background_progressbar_color">@color/white</item>
         <item name="cpb_background_progressbar_width">15dp</item>
-        <item name="cpb_progressbar_color">@color/bg_blue</item>
+        <item name="cpb_progressbar_color">#FF5722</item>
         <item name="cpb_progressbar_width">14dp</item>
         <item name="cpb_round_border">true</item>
     </style>
@@ -57,6 +84,7 @@
         <item name="android:textColor">#FFFFFF</item>
         <item name="android:textSize">@dimen/text_size_12sp</item>
     </style>
+
     <style name="BUTTON">
         <item name="android:gravity">center</item>
         <item name="android:background">@drawable/bg_button_blue</item>
@@ -64,6 +92,7 @@
         <item name="android:textSize">@dimen/text_size</item>
         <item name="android:textColor">@color/white</item>
     </style>
+
     <style name="BUTTON_NAVIGATION">
         <item name="android:background">@color/color_text_title</item>
         <item name="itemBackground">@color/color_text_title</item>
@@ -73,11 +102,21 @@
 
     <style name="BUTTON_POPUP_SHOW">
         <item name="android:background">@drawable/border_select_more</item>
-        <item name="android:src">@drawable/add_circle_24_blue</item>
+        <item name="android:src">@drawable/add_circle_24_green</item>
     </style>
+
     <style name="BUTTON_POPUP_HIDE">
         <item name="android:background">@drawable/border_select_more</item>
-        <item name="android:src">@drawable/cancel_24_blue</item>
+        <item name="android:src">@drawable/cancel_24_green</item>
+    </style>
+
+    <style name="CustomSuccessProgress" parent="Widget.MaterialComponents.CircularProgressIndicator">
+        <item name="trackCornerRadius">20dp</item>
+        <item name="indicatorColor">#FF5722</item>
+        <item name="android:rotation">-180</item>
+        <item name="indicatorSize">30dp</item>
+        <item name="trackThickness">3dp</item>
+        <item name="trackColor">#FFCEBF</item>
     </style>
 
     <!-- BUTTON_POPUP_HIDE background if light mode on -->

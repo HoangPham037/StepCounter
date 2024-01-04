@@ -15,7 +15,7 @@
             android:id="@+id/layoutTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
+            style="@style/BGR_HEADER"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -42,8 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/weekly"
-                android:textColor="@color/color_text_title"
-                android:textSize="16sp"
+                style="@style/TEXT_TITLE"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -53,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10dp"
                 android:background="@drawable/border_block_statistic"
-                android:backgroundTint="@color/white"
+                style="@style/BLOCK"
                 android:paddingVertical="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -65,7 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_10dp"
             android:background="@drawable/border_block_statistic"
-            android:backgroundTint="@color/white">
+           style="@style/BLOCK">
 
             <TextView
                 android:id="@+id/textView10"
@@ -91,7 +90,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/border_block_circle"
-                android:backgroundTint="@color/white"
+               style="@style/BLOCK"
                 android:orientation="horizontal"
                 android:paddingVertical="20dp"
                 android:weightSum="4"
@@ -267,7 +266,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/_10dp"
             android:background="@drawable/border_block_statistic"
-            android:backgroundTint="@color/white"
+           style="@style/BLOCK"
             android:orientation="horizontal"
             android:paddingVertical="20dp"
             android:weightSum="3.3"
@@ -291,8 +290,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Total Steps"
-                    android:textColor="@color/color_text_title"
-                    android:textSize="16sp" />
+                    style="@style/TEXT_TITLE"
+                    />
 
                 <TextView
                     android:id="@+id/tvTotalStepLifeTime"
@@ -319,8 +318,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Total Kcal"
-                    android:textColor="@color/color_text_title"
-                    android:textSize="16sp" />
+                    style="@style/TEXT_TITLE" />
 
                 <TextView
                     android:id="@+id/tvTotalKcalLifeTime"
@@ -347,8 +345,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Total Km"
-                    android:textColor="@color/color_text_title"
-                    android:textSize="16sp" />
+                    style="@style/TEXT_TITLE" />
 
                 <TextView
                     android:id="@+id/tvTotalKmLifeTime"

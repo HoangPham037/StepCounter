@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:background="@color/white"
+            android:background="@color/color_header"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -142,7 +142,7 @@
             android:layout_height="0dp"
             android:layout_margin="10dp"
             android:background="@drawable/border_block_circle"
-            android:backgroundTint="@color/white"
+            android:backgroundTint="@color/color_header"
             android:paddingVertical="@dimen/_10dp"
             android:scrollbars="none"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"

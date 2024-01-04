@@ -1,6 +1,5 @@
 package com.example.stepcount.ui.profile.profile_setting.item_setting
 
-import android.app.AlertDialog
 import android.view.View
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -8,6 +7,8 @@ import com.example.stepcount.Constant
 import com.example.stepcount.base.BaseFragment
 import com.example.stepcount.containers.MyApplication
 import com.example.stepcount.databinding.FragmentHeightBinding
+import com.example.stepcount.ui.dialog.CustomDialog
+import com.example.stepcount.ui.dialog.OnCustomDialogListener
 
 /*
  created by Hoang.pv in 29/05.2023
@@ -15,13 +16,19 @@ import com.example.stepcount.databinding.FragmentHeightBinding
 
 class HeightFragment : BaseFragment<FragmentHeightBinding>(
     FragmentHeightBinding::inflate
-) {
+), OnCustomDialogListener {
     private val mHeightFragmentArgs: HeightFragmentArgs by navArgs()
     private var selected = 0
+
+    companion object {
+        const val minValue = 1
+        const val maxValue = 230
+    }
+
     override fun setupView() {
         super.setupView()
-        binding.numberPickerHeight.minValue = 1
-        binding.numberPickerHeight.maxValue = 230
+        binding.numberPickerHeight.minValue = minValue
+        binding.numberPickerHeight.maxValue = maxValue
         selected = mHeightFragmentArgs.height
         binding.numberPickerHeight.value = selected
     }
@@ -50,17 +57,10 @@ class HeightFragment : BaseFragment<FragmentHeightBinding>(
     }
 
     private fun showDialogAlertConfirm() {
-        val dialogShowAlert = AlertDialog.Builder(requireContext())
-        dialogShowAlert.setMessage("Do you want to save?")
-        dialogShowAlert.setPositiveButton("SAVE") { _, _ ->
-            updateHeight()
-            findNavController().navigateUp()
-        }
-        dialogShowAlert.setNegativeButton("CANCEL") { dialog, _ ->
-            dialog.cancel()
-            findNavController().navigateUp()
-        }
-        dialogShowAlert.create().show()
+        val dialog = CustomDialog(requireContext())
+        dialog.setCancelable(false)
+        dialog.setCustomListener(this)
+        dialog.show()
     }
 
     private fun updateHeight() {
@@ -68,5 +68,13 @@ class HeightFragment : BaseFragment<FragmentHeightBinding>(
             val userId = MyApplication.loadData(Constant.KEY_USER_ID, Constant.VALUE_DEFAULT)
             appViewModel.updateHeightByUserId(userId.toLong(), selected)
         }
+    }
+
+    override fun onBtnYesListener() {
+        updateHeight()
+    }
+
+    override fun onNavigateToBack() {
+        findNavController().navigateUp()
     }
 }

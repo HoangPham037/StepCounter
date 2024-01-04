@@ -25,7 +25,7 @@
         <TextView
             android:id="@+id/tvOff"
             android:textSize="@dimen/text_size_14sp"
-            android:textColor="@color/color_text_title"
+            android:textColor="@color/color_text_recommend"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/off" />
@@ -66,7 +66,7 @@
             android:layout_below="@+id/btnPause"
             android:id="@+id/tvPause"
             android:textSize="@dimen/text_size_14sp"
-            android:textColor="@color/color_text_title"
+            android:textColor="@color/color_text_recommend"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/pause" />
@@ -89,7 +89,7 @@
         <TextView
             android:id="@+id/tvReset"
             android:textSize="@dimen/text_size_14sp"
-            android:textColor="@color/color_text_title"
+            android:textColor="@color/color_text_recommend"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="RESET" />
@@ -112,7 +112,7 @@
         <TextView
             android:id="@+id/tvPractice"
             android:textSize="@dimen/text_size_14sp"
-            android:textColor="@color/color_text_title"
+            android:textColor="@color/color_text_recommend"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="PRACTICE" />

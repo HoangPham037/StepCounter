@@ -17,6 +17,9 @@ import kotlinx.coroutines.launch
 import timber.log.Timber
 
 class AppViewModel(private val appRepository: AppRepository) : ViewModel() {
+
+
+
     private val _userLiveData = MutableLiveData<User>()
     val userLiveData: LiveData<User> = _userLiveData
 

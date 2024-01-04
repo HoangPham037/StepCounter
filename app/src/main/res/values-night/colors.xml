@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_header">#2B2A2A</color>
+    <color name="color_img_back">#FEFEFE</color>
+    <color name="color_progress">#FF5722</color>
+    <color name="color_text_number_picker">#FFFFFF</color>
+    <color name="color_bgr_recommend">#000000</color>
+    <color name="color_text_recommend">#FFFFFF</color>
+    <color name="color_text_splash">#03A9F4</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="blueGra">#6DCBFF</color>
+
+    <color name="color_theme">#FEFEFE</color>
+    <color name="bottom_nav_bg">#2D3A5D</color>
+    <color name="bottom_nav_item">#B8BFCF</color>
+    <color name="bottom_nav_selected_item">#03A9F4</color>
+    <color name="bg_block_setting_profile">#03A9F4</color>
+    <color name="bg_blue">#FF5722</color>
+    <color name="fragment_bg_color">#ffffff</color>
+    <color name="color_text_title">#363753</color>
+    <color name="bg_gray">#DFE3EE</color>
+    <color name="bg_dark_gray">#9D9EA1</color>
+    <color name="bg_green">#5CD2C6</color>
+    <color name="bg_orange">#f39911</color>
+
+    <color name="bgr_app_light_mode">#FEFEFE</color>
+    <color name="bgr_app_dark_mode">#000000</color>
+    <color name="bgr_block_dark">#2B2A2A</color>
+    <color name="bgr_block_light">#FFFFFF</color>
+</resources>
