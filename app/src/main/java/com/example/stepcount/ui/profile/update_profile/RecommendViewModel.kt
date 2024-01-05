@@ -1,35 +1,56 @@
 package com.example.stepcount.ui.profile.update_profile
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.stepcount.ui.profile.update_profile.RecommendProfileFragment.Companion.STEP_RANGE
 
 class RecommendViewModel : ViewModel() {
-    private val _selected = MutableLiveData(false)
-    val selected : LiveData<Boolean> = _selected
 
-    fun setSelected(isSelect:Boolean){
-        _selected.value = isSelect
+    private val _gender = MutableLiveData("Male")
+    val gender: LiveData<String> get() = _gender
+
+    fun setGender(gender: String) {
+        _gender.postValue(gender)
     }
 
-    val optionsList = MutableLiveData<ArrayList<String>>()
-    val selectedOption = MutableLiveData<String>()
-
-    fun initializeOptionsList(){
-        optionsList.value = ArrayList(STEP_RANGE.map { it.toString() })
+    private val _height = MutableLiveData<Int>(160)
+    val height: LiveData<Int> get() = _height
+    fun setHeight(height: Int) {
+        _height.postValue(height)
     }
 
-    fun onOptionSelected(option: String) {
-        selectedOption.value = option
+    private val _weightKg = MutableLiveData<String>("55")
+    val weightKg: LiveData<String> get() = _weightKg
+
+    fun setWeightKg(weightKg: String) {
+        _weightKg.postValue(weightKg)
     }
 
-    fun setInitialSelectedOption(position: Int) {
-        val options = optionsList.value
-        if (options != null && position >= 0 && position < options.size) {
-            selectedOption.value = options[position]
-        }
+    private val _weightG = MutableLiveData<String>("0")
+    val weightG: LiveData<String> get() = _weightG
+    fun setWeightG(weightG: String) {
+        _weightG.postValue(weightG)
     }
 
+    private val _totalWeight = MediatorLiveData<String>()
+    val totalWeight: LiveData<String> get() = _totalWeight
 
+    init {
+        _totalWeight.addSource(weightKg) { updateTotalWeight() }
+        _totalWeight.addSource(weightG) { updateTotalWeight() }
+    }
+
+    private fun updateTotalWeight() {
+        val kg = _weightKg.value ?: "55"
+        val g = _weightG.value ?: "0"
+        _totalWeight.value = "$kg.$g"
+    }
+
+    private val _age = MutableLiveData<Int>(18)
+    val age: LiveData<Int> get() = _age
+
+    fun setAge(age: Int) {
+        _age.postValue(age)
+    }
 }

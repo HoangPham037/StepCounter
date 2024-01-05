@@ -77,7 +77,7 @@ class AppViewModel(private val appRepository: AppRepository) : ViewModel() {
         }
     }
 
-    fun updateWeightByUserId(id: Long, weight: Int) {
+    fun updateWeightByUserId(id: Long, weight: Double) {
         viewModelScope.launch {
             appRepository.updateWeightByUserId(id, weight)
         }

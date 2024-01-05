@@ -24,10 +24,8 @@ class MainActivity : AppCompatActivity() {
 //        }
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-
         setContentView(binding.root)
         navigateToGPSFragment(intent)
-        requestPermission()
     }
 
     override fun onNewIntent(intent: Intent?) {
@@ -55,78 +53,5 @@ class MainActivity : AppCompatActivity() {
                 navController.navigate(R.id.action_global_homeFragment)
             }
         }
-    }
-
-    private fun requestPermission() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            if (!PermissionX.isGranted(this, Manifest.permission.ACTIVITY_RECOGNITION)){
-                PermissionX.init(this)
-                    .permissions(Manifest.permission.ACTIVITY_RECOGNITION)
-                    .onExplainRequestReason { scope, denieList ->
-                        scope.showRequestReasonDialog(
-                            denieList,
-                            "Core fundamental are based on these permissions",
-                            "OK",
-                            "Cancel"
-                        )
-                    }
-                    .onForwardToSettings { scope, denidList ->
-                        scope.showForwardToSettingsDialog(
-                            denidList,
-                            "You need to allow necessary permissions in Settings manually",
-                            "OK",
-                            "Cancel"
-                        )
-                    }
-                    .request { allGranted, _, deniedList ->
-                        if (allGranted) {
-                            Toast.makeText(this, "All permissions are granted", Toast.LENGTH_LONG)
-                                .show()
-                        } else {
-                            Toast.makeText(
-                                this,
-                                "These permissions are denied: $deniedList",
-                                Toast.LENGTH_LONG
-                            ).show()
-                        }
-                    }
-            }
-
-
-        }
-
-        if (!PermissionX.isGranted(this, Manifest.permission.BODY_SENSORS)) {
-            PermissionX.init(this)
-                .permissions(Manifest.permission.BODY_SENSORS,)
-                .onExplainRequestReason { scope, denieList ->
-                    scope.showRequestReasonDialog(
-                        denieList,
-                        "Core fundamental are based on these permissions",
-                        "OK",
-                        "Cancel"
-                    )
-                }
-                .onForwardToSettings { scope, denidList ->
-                    scope.showForwardToSettingsDialog(
-                        denidList,
-                        "You need to allow necessary permissions in Settings manually",
-                        "OK",
-                        "Cancel"
-                    )
-                }
-                .request { allGranted, _, deniedList ->
-                    if (allGranted) {
-                        Toast.makeText(this, "All permissions are granted", Toast.LENGTH_LONG)
-                            .show()
-                    } else {
-                        Toast.makeText(
-                            this,
-                            "These permissions are denied: $deniedList",
-                            Toast.LENGTH_LONG
-                        ).show()
-                    }
-                }
-        }
-
     }
 }

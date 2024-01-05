@@ -11,7 +11,7 @@ import com.example.stepcount.data.model.HistoryData
 import com.example.stepcount.data.model.StepsData
 import com.example.stepcount.data.model.User
 
-@Database(entities = [User::class, StepsData::class, HistoryData::class], version = 3)
+@Database(entities = [User::class, StepsData::class, HistoryData::class], version = 4)
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun userDao() : UserDao

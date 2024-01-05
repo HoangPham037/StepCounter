@@ -13,7 +13,7 @@ class SplashViewModel: ViewModel() {
 
     fun startDelay() {
         viewModelScope.launch {
-            delay(3000)
+            delay(1000)
             _navigateToNextScreen.value = Unit
         }
     }

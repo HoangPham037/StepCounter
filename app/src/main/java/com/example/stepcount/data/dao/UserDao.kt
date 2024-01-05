@@ -26,7 +26,7 @@ interface UserDao {
     suspend fun updateHeightByUserId(id: Long, height: Int)
 
     @Query("UPDATE user_database SET weight_col= :weight WHERE id = :id")
-    suspend fun updateWeightByUserId(id: Long, weight: Int)
+    suspend fun updateWeightByUserId(id: Long, weight: Double)
 
     @Update
     suspend fun updateUser(user: User)

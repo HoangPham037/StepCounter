@@ -8,11 +8,11 @@ data class User(
     @ColumnInfo(name = "gender_col")
     var gender: String? = "",
     @ColumnInfo(name = "stepLength_col")
-    var stepLength: Int? = 0,
+    var stepLength: Double? = 0.0,
     @ColumnInfo(name = "height_col")
     var height: Int? = 0,
     @ColumnInfo(name = "weight_col")
-    var weight: Int? = 0,
+    var weight: Double? = 0.0,
     @ColumnInfo(name = "goal_col")
     val goal: Int? = 0
 ){

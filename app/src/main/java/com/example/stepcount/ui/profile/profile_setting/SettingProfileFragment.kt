@@ -14,9 +14,9 @@ class SettingProfileFragment : BaseFragment<FragmentSettingProfileBinding>(
     FragmentSettingProfileBinding::inflate
 ) {
     private var genders: String = ""
-    private var steps: Int = 0
+    private var steps: Double = 0.0
     private var heights: Int = 0
-    private var weights: Int = 0
+    private var weights: Double = 0.0
 
     override fun setupDataObserver() {
         super.setupDataObserver()
@@ -39,11 +39,11 @@ class SettingProfileFragment : BaseFragment<FragmentSettingProfileBinding>(
         }
     }
 
-    private fun initUi(gender: String, step: Int, height: Int, weight: Int) {
+    private fun initUi(gender: String, step: Double, height: Int, weight: Double) {
         binding.tvGender.text = gender
-        binding.tvStepsLength.text = formatString(step, "Cm")
-        binding.tvHeight.text = formatString(height, "Cm")
-        binding.tvWeight.text = formatStringWeight(weight, "Kg")
+        binding.tvStepsLength.text = String.format("%.1f%s", step, "Cm")
+        binding.tvHeight.text = String.format("%d%s", height, "Cm")
+        binding.tvWeight.text = String.format("%.1f%s", weight, "Kg")
     }
 
     override fun initEventOnClick() {
@@ -74,13 +74,13 @@ class SettingProfileFragment : BaseFragment<FragmentSettingProfileBinding>(
 
     private fun navigateWeightFragment() {
         val actionSettingProfileFragmentDirectionsWeight =
-            SettingProfileFragmentDirections.actionSettingProfileFragmentToWeightFragment(weights)
+            SettingProfileFragmentDirections.actionSettingProfileFragmentToWeightFragment(weights.toInt())
         findNavController().navigate(actionSettingProfileFragmentDirectionsWeight)
     }
 
     private fun navigateStepLengthFragment() {
         val actionSettingProfileFragmentDirectionsStep =
-            SettingProfileFragmentDirections.actionSettingProfileFragmentToStepLengthFragment(steps)
+            SettingProfileFragmentDirections.actionSettingProfileFragmentToStepLengthFragment(steps.toInt())
         findNavController().navigate(actionSettingProfileFragmentDirectionsStep)
     }
 

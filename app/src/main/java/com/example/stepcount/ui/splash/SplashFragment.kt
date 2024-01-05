@@ -26,10 +26,6 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>(
     private lateinit var animationTop: Animation
     private lateinit var animationBottom: Animation
     private val splashViewModel: SplashViewModel by viewModel()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
     override fun setupView() {
         super.setupView()
         setAnimation()
@@ -47,7 +43,6 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>(
         splashViewModel.navigateToNextScreen.observe(viewLifecycleOwner) {
             appViewModel.registeredUserId.observe(viewLifecycleOwner) { userId ->
                 if (userId != null) {
-                    MyApplication.saveData(KEY_USER_ID, userId.toFloat())
                     navigateToHomeScreen()
                 } else {
                     navigateToRecommendScreen()
@@ -62,6 +57,6 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>(
     }
 
     private fun navigateToRecommendScreen() {
-        findNavController().navigate(R.id.action_splashFragment_to_recommendProfileFragment)
+        findNavController().navigate(R.id.action_splashFragment_to_recommendFragment)
     }
 }

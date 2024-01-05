@@ -38,7 +38,7 @@ class AppRepository(
         userDao.updateHeightByUserId(id, height)
     }
 
-    suspend fun updateWeightByUserId(id: Long, weight: Int) = withContext(dispatcher){
+    suspend fun updateWeightByUserId(id: Long, weight: Double) = withContext(dispatcher){
         userDao.updateWeightByUserId(id, weight)
     }
 

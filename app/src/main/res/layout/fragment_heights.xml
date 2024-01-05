@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/_10dp"
+    tools:context=".ui.profile.update_profile.recommend.GendersFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/btn_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_arrow_back_ios_new_24" />
+
+            <TextView
+                android:id="@+id/tv_skip"
+                style="@style/TEXT_TITLE"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="@string/skip" />
+        </LinearLayout>
+
+
+        <TextView
+            style="@style/TEXT_HEADER"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10dp"
+            android:text="How tall are you" />
+
+        <TextView
+            style="@style/TEXT_TITLE"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Distance &amp; speed calculation needs it" />
+
+    </LinearLayout>
+
+    <com.shawnlin.numberpicker.NumberPicker
+        android:id="@+id/number_picker_height"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="20dp"
+        app:np_accessibilityDescriptionEnabled="true"
+        app:np_dividerColor="@color/bg_blue"
+        app:np_dividerDistance="35dp"
+        app:np_itemSpacing="@dimen/_10dp"
+        app:np_min="25"
+        app:np_max="250"
+        app:np_selectedTextColor="@color/color_progress"
+        app:np_selectedTextSize="@dimen/text_size"
+        app:np_textColor="@color/color_text_number_picker"
+        app:np_textSize="@dimen/text_size"
+        app:np_wheelItemCount="6"
+        app:np_wrapSelectorWheel="true" />
+
+    <TextView
+        style="@style/TEXT_COVER"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btn_continue"
+        android:layout_marginHorizontal="@dimen/_10dp"
+        android:text="Your privacy is paramount to us. We never share your personal information with any third parties." />
+
+    <Button
+        android:id="@+id/btn_continue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/_10dp"
+        android:backgroundTint="@color/bg_blue"
+        android:text="@string/continues" />
+
+</RelativeLayout>

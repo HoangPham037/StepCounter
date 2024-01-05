@@ -93,4 +93,12 @@
     <string name="_70k">70k</string>
     <string name="level">Level</string>
     <string name="finish">finish</string>
+    <string name="select_gender">Select Gender</string>
+    <string name="calories_amp_stride_length_calculation_nedds_it"><![CDATA[Calories & stride length calculation nedds it.]]></string>
+    <string name="skip">Skip</string>
+    <string name="continues">Continue</string>
+    <string name="gone">Gone</string>
+    <string name="how_old_are_you">How old are you?</string>
+    <string name="what_s_your_current_weight">What\'s your current weight?</string>
+    <string name="text_des">Your privacy is paramount to us. We never share your personal information with any third parties.</string>
 </resources>

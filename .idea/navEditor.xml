@@ -18,6 +18,18 @@
                       <LayoutPositions />
                     </value>
                   </entry>
+                  <entry key="agesFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="64" />
+                            <option name="y" value="316" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="dailyStepsDetailFragment">
                     <value>
                       <LayoutPositions>
@@ -66,6 +78,18 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="gendersFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="12" />
+                            <option name="y" value="12" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="gpsFragment">
                     <value>
                       <LayoutPositions>
@@ -85,6 +109,18 @@
                           <Point>
                             <option name="x" value="601" />
                             <option name="y" value="-118" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="heightsFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="236" />
+                            <option name="y" value="364" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -198,13 +234,34 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="recommendFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-2230" />
+                            <option name="y" value="-57" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_recommendFragment_to_mainFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="recommendProfileFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-1934" />
-                            <option name="y" value="-297" />
+                            <option name="x" value="-2102" />
+                            <option name="y" value="-509" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -260,8 +317,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-1710" />
-                            <option name="y" value="-1" />
+                            <option name="x" value="-1802" />
+                            <option name="y" value="43" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -271,7 +328,7 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="action_splashFragment_to_recommendProfileFragment">
+                            <entry key="action_splashFragment_to_recommendFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -324,6 +381,18 @@
                           <Point>
                             <option name="x" value="601" />
                             <option name="y" value="-438" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="weightsFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="256" />
+                            <option name="y" value="12" />
                           </Point>
                         </option>
                       </LayoutPositions>

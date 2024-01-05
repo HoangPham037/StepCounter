@@ -7,7 +7,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.stepcount.DateHelper
 import com.example.stepcount.data.model.StepsData
-import java.text.SimpleDateFormat
 import java.time.Month
 import java.util.*
 import kotlin.collections.ArrayList
