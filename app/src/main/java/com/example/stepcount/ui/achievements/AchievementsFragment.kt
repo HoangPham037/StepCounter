@@ -4,24 +4,32 @@ import android.content.res.ColorStateList
 import android.view.View
 import android.view.WindowManager.LayoutParams
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navGraphViewModels
 import com.example.stepcount.Constant
+import com.example.stepcount.Constant.NavigateToNameFragment.FRAGMENT_DAILY_STEP_DETAIL_NAME
+import com.example.stepcount.Constant.NavigateToNameFragment.FRAGMENT_DETAILS_ACHIEVE_NAME
+import com.example.stepcount.Constant.NavigateToNameFragment.FRAGMENT_SUM_DISTANCE_DETAIL_NAME
 import com.example.stepcount.Constant.replaceString
 import com.example.stepcount.R
 import com.example.stepcount.ShareDataViewModel
 import com.example.stepcount.base.BaseFragment
 import com.example.stepcount.databinding.FragmentAchievementsBinding
+import com.example.stepcount.extension.changeFragment
+import com.example.stepcount.extension.changeFragmentAddToBackStacks
 import com.example.stepcount.ui.achievements.adapter.DailyStepAdapter
 import com.example.stepcount.ui.achievements.adapter.DistanceAdapter
+import com.example.stepcount.ui.achievements.detail.DailyStepsDetailFragment
+import com.example.stepcount.ui.achievements.detail.SumDistanceDetailFragment
 
 class AchievementsFragment : BaseFragment<FragmentAchievementsBinding>(
     FragmentAchievementsBinding::inflate
 ) {
 
     private val achievementsViewModel: AchievementsViewModel by viewModels()
-    private val shareDataViewModel: ShareDataViewModel by navGraphViewModels(R.id.nav_graph)
+    private val shareDataViewModel: ShareDataViewModel by activityViewModels()
     private lateinit var dailyStepAdapter: DailyStepAdapter
     private lateinit var distanceAdapter: DistanceAdapter
     private val listValueLevel = arrayListOf(
@@ -50,14 +58,20 @@ class AchievementsFragment : BaseFragment<FragmentAchievementsBinding>(
     override fun initEventOnClick() {
         super.initEventOnClick()
         binding.tvSeeMoreYourLv.setOnClickListener {
-            findNavController().navigate(R.id.action_mainFragment_to_detailsAchieveFragment)
+            activity?.let {
+                changeFragmentAddToBackStacks(DetailsAchieveFragment(), it.supportFragmentManager,FRAGMENT_DETAILS_ACHIEVE_NAME )
+            }
         }
         binding.tvSeeMoreDailySteps.setOnClickListener {
-            findNavController().navigate(R.id.action_mainFragment_to_dailyStepsDetailFragment)
+            activity?.let {
+                changeFragmentAddToBackStacks(DailyStepsDetailFragment(), it.supportFragmentManager, FRAGMENT_DAILY_STEP_DETAIL_NAME)
+            }
         }
 
         binding.tvSeeMoreSumDistance.setOnClickListener {
-            findNavController().navigate(R.id.action_mainFragment_to_sumDistanceDetailFragment)
+            activity?.let {
+                changeFragmentAddToBackStacks(SumDistanceDetailFragment(), it.supportFragmentManager, FRAGMENT_SUM_DISTANCE_DETAIL_NAME )
+            }
         }
     }
 

@@ -1,13 +1,12 @@
 package com.example.stepcount.ui.profile.update_profile.recommend
 
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.example.stepcount.Constant
-import com.example.stepcount.R
 import com.example.stepcount.base.BaseFragment
 import com.example.stepcount.databinding.FragmentHeightsBinding
+import com.example.stepcount.extension.changeFragment
+import com.example.stepcount.ui.mainfragment.MainFragment
 import com.example.stepcount.ui.profile.update_profile.RecommendFragment
-import com.example.stepcount.ui.profile.update_profile.RecommendFragmentDirections
 import com.example.stepcount.ui.profile.update_profile.RecommendViewModel
 
 
@@ -31,13 +30,13 @@ class HeightsFragment : BaseFragment<FragmentHeightsBinding>(
         viewModel.height.observe(viewLifecycleOwner) {
             binding.numberPickerHeight.value = it
         }
-        viewModel.height.observe(viewLifecycleOwner) {height->
+        viewModel.height.observe(viewLifecycleOwner) { height ->
             height?.let { value ->
-               appViewModel.registeredUserId.observe(viewLifecycleOwner) {userId ->
-                   userId?.let {
-                       appViewModel.updateHeightByUserId(it, value)
-                   }
-               }
+                appViewModel.registeredUserId.observe(viewLifecycleOwner) { userId ->
+                    userId?.let {
+                        appViewModel.updateHeightByUserId(it, value)
+                    }
+                }
             }
         }
     }
@@ -45,8 +44,9 @@ class HeightsFragment : BaseFragment<FragmentHeightsBinding>(
     override fun initEventOnClick() {
         super.initEventOnClick()
         binding.tvSkip.setOnClickListener {
-            val action = RecommendFragmentDirections.actionRecommendFragmentToMainFragment()
-            findNavController().navigate(action)
+            activity?.let {
+                changeFragment(MainFragment(), it.supportFragmentManager)
+            }
         }
 
         binding.btnContinue.setOnClickListener {

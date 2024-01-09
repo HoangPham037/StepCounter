@@ -4,6 +4,7 @@ import android.graphics.Rect
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navGraphViewModels
@@ -20,7 +21,7 @@ import com.example.stepcount.ShareDataViewModel
 class SumDistanceDetailFragment : BaseFragment<FragmentSumDistanceDetailBinding>(
     FragmentSumDistanceDetailBinding::inflate
 ) {
-    private val shareDataViewModel: ShareDataViewModel by navGraphViewModels(R.id.nav_graph)
+    private val shareDataViewModel: ShareDataViewModel by activityViewModels()
     private val achievementsViewModel: AchievementsViewModel by viewModels()
     private lateinit var distanceAdapter: DistanceAdapter
 
@@ -45,7 +46,9 @@ class SumDistanceDetailFragment : BaseFragment<FragmentSumDistanceDetailBinding>
     override fun initEventOnClick() {
         super.initEventOnClick()
         binding.imgBack.setOnClickListener {
-            findNavController().navigateUp()
+            activity?.let {
+                it.supportFragmentManager.popBackStack()
+            }
         }
     }
 

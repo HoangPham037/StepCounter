@@ -165,12 +165,7 @@
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/71d2fe65f039cb17075c3d0015ae565a/transformed/jetified-flexbox-3.0.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/474095fbb920bf2e117918ffb0b54ac8/transformed/jetified-kotlin-stdlib-jdk7-1.7.20.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/53f4d785c046049eea6ff3823873e307/transformed/jetified-koin-android-2.2.0-alpha-1-api.jar</arg>
-                <arg>$USER_HOME$/.gradle/caches/transforms-3/5045637b836c9d6c28f787af9d1f67f0/transformed/jetified-converter-gson-2.9.0.jar</arg>
-                <arg>$USER_HOME$/.gradle/caches/transforms-3/ca55c128a16a76a1ef863cf1d43e9008/transformed/jetified-retrofit-2.9.0.jar</arg>
-                <arg>$USER_HOME$/.gradle/caches/transforms-3/8fd63e5db87d067dbfd4081cdb9f9788/transformed/jetified-logging-interceptor-4.7.2.jar</arg>
-                <arg>$USER_HOME$/.gradle/caches/transforms-3/8c3dfec4de066b9e40bb5e023bc6b388/transformed/jetified-okhttp-4.7.2.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/b01f22770d653973f76a10e8c86a36ca/transformed/jetified-koin-core-2.2.0-alpha-1.jar</arg>
-                <arg>$USER_HOME$/.gradle/caches/transforms-3/3a02f04ff2b9156477bd0145f03707f3/transformed/jetified-okio-jvm-2.6.0.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/197b155fd12cb7aec2fc39e768ee7239/transformed/jetified-kotlin-stdlib-1.7.20.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/11120467afada3faab85c1893eadccd9/transformed/jetified-kotlin-stdlib-common-1.7.20.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/3f64cb49aec1154c48de2580477a711c/transformed/jetified-timber-4.7.1-api.jar</arg>

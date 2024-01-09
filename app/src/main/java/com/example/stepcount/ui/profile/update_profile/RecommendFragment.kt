@@ -3,13 +3,9 @@ package com.example.stepcount.ui.profile.update_profile
 import android.Manifest
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
-import androidx.fragment.app.activityViewModels
-import com.example.stepcount.Constant
 import com.example.stepcount.base.BaseFragment
-import com.example.stepcount.containers.MyApplication
 import com.example.stepcount.data.model.User
 import com.example.stepcount.databinding.FragmentRecommendBinding
 import com.permissionx.guolindev.PermissionX
@@ -18,6 +14,7 @@ class RecommendFragment : BaseFragment<FragmentRecommendBinding>(
     FragmentRecommendBinding::inflate
 ) {
     private lateinit var viewPagerAdapter: ViewPagerRecommend
+
     companion object {
         const val GENDER = "Male"
         const val STEP_LENGTH = 150.0
@@ -32,27 +29,24 @@ class RecommendFragment : BaseFragment<FragmentRecommendBinding>(
         appViewModel.saveUser(user)
         requestPermission()
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewPagerAdapter = ViewPagerRecommend(childFragmentManager, lifecycle)
         binding.viewpagerManagers.apply {
-            offscreenPageLimit = 4
+            offscreenPageLimit = 3
             adapter = viewPagerAdapter
             isUserInputEnabled = false
         }
-        appViewModel.registeredUserId.observe(viewLifecycleOwner) {userId->
-            userId?.let {
-                Log.d("777777", "Recommend: $userId")
-            }
-        }
-
-//        val userId = MyApplication.loadData(Constant.KEY_USER_ID, Constant.VALUE_DEFAULT)
-//        Log.d("777777", "Recommend: $userId")
     }
 
     private fun requestPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            if (!PermissionX.isGranted(requireContext(), Manifest.permission.ACTIVITY_RECOGNITION)){
+            if (!PermissionX.isGranted(
+                    requireContext(),
+                    Manifest.permission.ACTIVITY_RECOGNITION
+                )
+            ) {
                 PermissionX.init(this)
                     .permissions(Manifest.permission.ACTIVITY_RECOGNITION)
                     .onExplainRequestReason { scope, denieList ->
@@ -73,7 +67,11 @@ class RecommendFragment : BaseFragment<FragmentRecommendBinding>(
                     }
                     .request { allGranted, _, deniedList ->
                         if (allGranted) {
-                            Toast.makeText(requireContext(), "All permissions are granted", Toast.LENGTH_LONG)
+                            Toast.makeText(
+                                requireContext(),
+                                "All permissions are granted",
+                                Toast.LENGTH_LONG
+                            )
                                 .show()
                         } else {
                             Toast.makeText(
@@ -84,13 +82,11 @@ class RecommendFragment : BaseFragment<FragmentRecommendBinding>(
                         }
                     }
             }
-
-
         }
 
         if (!PermissionX.isGranted(requireContext(), Manifest.permission.BODY_SENSORS)) {
             PermissionX.init(this)
-                .permissions(Manifest.permission.BODY_SENSORS,)
+                .permissions(Manifest.permission.BODY_SENSORS)
                 .onExplainRequestReason { scope, denieList ->
                     scope.showRequestReasonDialog(
                         denieList,
@@ -109,7 +105,11 @@ class RecommendFragment : BaseFragment<FragmentRecommendBinding>(
                 }
                 .request { allGranted, _, deniedList ->
                     if (allGranted) {
-                        Toast.makeText(requireContext(), "All permissions are granted", Toast.LENGTH_LONG)
+                        Toast.makeText(
+                            requireContext(),
+                            "All permissions are granted",
+                            Toast.LENGTH_LONG
+                        )
                             .show()
                     } else {
                         Toast.makeText(
@@ -120,6 +120,5 @@ class RecommendFragment : BaseFragment<FragmentRecommendBinding>(
                     }
                 }
         }
-
     }
 }

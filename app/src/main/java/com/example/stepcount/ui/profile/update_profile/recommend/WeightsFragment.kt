@@ -1,13 +1,12 @@
 package com.example.stepcount.ui.profile.update_profile.recommend
 
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.findNavController
 import com.example.stepcount.Constant
-import com.example.stepcount.R
 import com.example.stepcount.base.BaseFragment
 import com.example.stepcount.databinding.FragmentWeightsBinding
+import com.example.stepcount.extension.changeFragment
+import com.example.stepcount.ui.mainfragment.MainFragment
 import com.example.stepcount.ui.profile.update_profile.RecommendFragment
-import com.example.stepcount.ui.profile.update_profile.RecommendFragmentDirections
 import com.example.stepcount.ui.profile.update_profile.RecommendViewModel
 
 class WeightsFragment : BaseFragment<FragmentWeightsBinding>(
@@ -57,19 +56,28 @@ class WeightsFragment : BaseFragment<FragmentWeightsBinding>(
     override fun initEventOnClick() {
         super.initEventOnClick()
         binding.tvSkip.setOnClickListener {
-            findNavController().navigate(R.id.action_recommendFragment_to_mainFragment)
+            putActionToMainActivity()
+
         }
         binding.btnGone.setOnClickListener {
-            val action = RecommendFragmentDirections.actionRecommendFragmentToMainFragment()
-            findNavController().navigate(action)
+            putActionToMainActivity()
         }
         binding.btnBack.setOnClickListener {
-            val recommendFragment = parentFragment as? RecommendFragment
-            recommendFragment?.let {
-                val viewPager = it.binding.viewpagerManagers
-                viewPager.currentItem = Constant.IndexPage.indexTwo
-            }
+            setCurrentFragment()
         }
+    }
 
+    private fun putActionToMainActivity() {
+        activity?.let {
+            changeFragment(MainFragment(), it.supportFragmentManager)
+        }
+    }
+
+    private fun setCurrentFragment() {
+        val recommendFragment = parentFragment as? RecommendFragment
+        recommendFragment?.let {
+            val viewPager = it.binding.viewpagerManagers
+            viewPager.currentItem = Constant.IndexPage.indexTwo
+        }
     }
 }

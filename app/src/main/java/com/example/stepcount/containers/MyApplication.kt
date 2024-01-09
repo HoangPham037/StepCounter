@@ -38,7 +38,13 @@ class MyApplication : Application() {
         fun loadData(key: String, setDefault: Float): Float {
             return sharedPreferences?.getFloat(key, setDefault) ?: 0f
         }
-
+        fun saveIntData(key: String, value: Int) {
+            editor.putInt(key, value)
+            editor.apply()
+        }
+        fun loadIntData(key: String, setDefault: Int): Int {
+            return sharedPreferences?.getInt(key, setDefault) ?: 0
+        }
         fun saveDataBoolean(key: String, value: Boolean) {
             editor.putBoolean(key, value)
             editor.apply()

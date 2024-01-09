@@ -1,12 +1,7 @@
 package com.example.stepcount.ui.profile.profile_setting
 
 import androidx.navigation.fragment.findNavController
-import com.example.stepcount.Constant.KEY_USER_ID
-import com.example.stepcount.Constant.VALUE_DEFAULT
-import com.example.stepcount.Constant.formatString
-import com.example.stepcount.Constant.formatStringWeight
 import com.example.stepcount.base.BaseFragment
-import com.example.stepcount.containers.MyApplication
 import com.example.stepcount.databinding.FragmentSettingProfileBinding
 
 @Suppress("UNUSED_EXPRESSION")
@@ -22,6 +17,7 @@ class SettingProfileFragment : BaseFragment<FragmentSettingProfileBinding>(
         super.setupDataObserver()
         getUserById()
     }
+
     private fun getUserById() {
         appViewModel.userLiveData.observe(viewLifecycleOwner) { user ->
             with(user) {
@@ -49,8 +45,7 @@ class SettingProfileFragment : BaseFragment<FragmentSettingProfileBinding>(
     override fun initEventOnClick() {
         super.initEventOnClick()
         binding.imgBackSettingProfile.setOnClickListener {
-
-            findNavController().popBackStack()
+            activity?.supportFragmentManager?.popBackStack()
         }
         binding.layoutStepLength.setOnClickListener {
             navigateStepLengthFragment()

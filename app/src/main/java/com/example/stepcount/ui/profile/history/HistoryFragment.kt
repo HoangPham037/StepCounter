@@ -14,7 +14,7 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>(
     override fun initEventOnClick() {
         super.initEventOnClick()
         binding.imgBackHistory.setOnClickListener {
-            findNavController().navigateUp()
+            activity?.supportFragmentManager?.popBackStack()
         }
     }
 

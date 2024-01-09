@@ -46,16 +46,9 @@ class YourGoalFragment : BaseFragment<FragmentYourGoalBinding>(
             showDialogAlertConfirm()
         }
         binding.numberPicker.setOnValueChangedListener { picker, oldValue, newValue ->
-//            selected = picker.value
             val pickerIndex = picker.value
 
                 selected = data[pickerIndex].toInt()
-
-                Log.d("555555", "Selected value: $selected")
-
-                Log.d("555555", "picker.value: ${picker.value}")
-                Log.d("555555", "oldValue: ${oldValue}")
-                Log.d("555555", "newValue: ${newValue}")
                 binding.numberPicker.value = selected
                 binding.tvSave.apply {
                     visibility = View.VISIBLE

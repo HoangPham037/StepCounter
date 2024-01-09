@@ -4,6 +4,7 @@ import android.graphics.Rect
 import android.view.View
 import android.view.ViewTreeObserver
 import android.view.WindowManager.LayoutParams
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navGraphViewModels
@@ -34,7 +35,7 @@ class DailyStepsDetailFragment : BaseFragment<FragmentDailyStepsDetailBinding>(
         private const val LEVEL_9 = 60f
     }
 
-    private val shareDataViewModel: ShareDataViewModel by navGraphViewModels(R.id.nav_graph)
+    private val shareDataViewModel: ShareDataViewModel by activityViewModels()
     private val achievementsViewModel: AchievementsViewModel by viewModels()
     private lateinit var dailyStepAdapter: DailyStepAdapter
     private val listValueLevel = arrayListOf(
@@ -53,7 +54,9 @@ class DailyStepsDetailFragment : BaseFragment<FragmentDailyStepsDetailBinding>(
     override fun initEventOnClick() {
         super.initEventOnClick()
         binding.imgBack.setOnClickListener {
-            findNavController().navigateUp()
+            activity?.let {
+                it.supportFragmentManager.popBackStack()
+            }
         }
     }
 

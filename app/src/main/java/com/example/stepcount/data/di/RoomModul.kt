@@ -13,7 +13,7 @@ fun providesDatabase(application: Application): AppDatabase =
         application,
         AppDatabase::class.java,
         "app_databases"
-    ).build()
+    ).fallbackToDestructiveMigration().build()
 
 
 val roomModule = module {

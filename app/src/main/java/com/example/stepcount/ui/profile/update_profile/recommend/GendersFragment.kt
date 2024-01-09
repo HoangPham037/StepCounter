@@ -9,6 +9,8 @@ import com.example.stepcount.Constant
 import com.example.stepcount.R
 import com.example.stepcount.base.BaseFragment
 import com.example.stepcount.databinding.FragmentGendersBinding
+import com.example.stepcount.extension.changeFragment
+import com.example.stepcount.ui.mainfragment.MainFragment
 import com.example.stepcount.ui.profile.update_profile.RecommendFragment
 import com.example.stepcount.ui.profile.update_profile.RecommendFragmentDirections
 import com.example.stepcount.ui.profile.update_profile.RecommendViewModel
@@ -42,7 +44,6 @@ class GendersFragment : BaseFragment<FragmentGendersBinding>(
                     }
                 }
             }
-
         }
     }
     override fun initEventOnClick() {
@@ -56,8 +57,9 @@ class GendersFragment : BaseFragment<FragmentGendersBinding>(
             }
         }
         binding.tvSkip.setOnClickListener {
-            val action = RecommendFragmentDirections.actionRecommendFragmentToMainFragment()
-            findNavController().navigate(action)
+            activity?.let {
+                changeFragment(MainFragment(), it.supportFragmentManager)
+            }
         }
         binding.btnContinue.setOnClickListener {
             viewModel.setGender(getGender)

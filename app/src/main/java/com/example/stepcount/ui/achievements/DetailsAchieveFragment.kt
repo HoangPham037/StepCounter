@@ -44,7 +44,9 @@ class DetailsAchieveFragment : BaseFragment<FragmentDetailsAchieveBinding>(
     override fun initEventOnClick() {
         super.initEventOnClick()
         binding.imgBack.setOnClickListener {
-            findNavController().navigateUp()
+            activity?.let {
+                it.supportFragmentManager.popBackStack()
+            }
         }
     }
 

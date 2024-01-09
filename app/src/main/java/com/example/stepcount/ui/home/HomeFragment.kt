@@ -18,12 +18,11 @@ import android.view.WindowManager
 import android.widget.PopupWindow
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.navGraphViewModels
 import com.example.stepcount.Constant.IndexPage.indexFour
 import com.example.stepcount.DateHelper
-import com.example.stepcount.R
 import com.example.stepcount.ShareDataViewModel
 import com.example.stepcount.base.BaseFragment
 import com.example.stepcount.containers.MyApplication
@@ -32,19 +31,14 @@ import com.example.stepcount.databinding.DialogSelectMoreBinding
 import com.example.stepcount.databinding.FragmentHomeBinding
 import com.example.stepcount.service.StepCountService
 import com.example.stepcount.ui.home.adapter.SuccessAdapter
-import com.example.stepcount.ui.main.MainActivity
 import com.example.stepcount.ui.mainfragment.MainFragment
 import com.google.android.flexbox.AlignItems
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import java.text.DateFormat
 import java.util.*
-import kotlin.math.log
 
 
 class HomeFragment :
@@ -61,7 +55,7 @@ class HomeFragment :
 
     private var sensorManager: SensorManager? = null
     private var sensor: Sensor? = null
-    private val shareDataViewModel: ShareDataViewModel by navGraphViewModels(R.id.nav_graph)
+    private val shareDataViewModel: ShareDataViewModel by activityViewModels()
     private lateinit var popupWindow: PopupWindow
     private var running = false
     private var previousTotalSteps = 0f
@@ -76,7 +70,8 @@ class HomeFragment :
     private val day = calendar[Calendar.DAY_OF_MONTH]
     private val month = calendar[Calendar.MONTH] + 1
     private val year = calendar[Calendar.YEAR]
-    private var currentDay: String?=null
+    private var currentDayName: String? = null
+    private var caloriesBurned = 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -84,6 +79,7 @@ class HomeFragment :
         activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
         sensorManager = requireContext().getSystemService(Context.SENSOR_SERVICE) as SensorManager
         sensor = sensorManager?.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)
+        startForegroundService()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -97,14 +93,13 @@ class HomeFragment :
     @RequiresApi(Build.VERSION_CODES.O)
     override fun setupView() {
         super.setupView()
+        Log.d("888888", "setupView: ")
         getCurrentTime()
         shareDataViewModel.currentStepCounter.observe(viewLifecycleOwner) { currentStep ->
             currentSteps = currentStep
-            val calories = calculateCaloriesCovered(currentStep.toFloat())
             val distance = calculateDistance(currentStep.toFloat())
             val time = calculateTime(currentStep.toInt(), distance)
             binding.sumSteps.text = currentStep.toInt().toString()
-            binding.sumCalories.text = String.format("%.2f %s", calories, "Kcal").replace(",", ".")
             binding.tvTime.text = formatDisplayFloat(time.toFloat(), "HH:mm")
             binding.tvDistance.text = String.format("%.2f %s", distance, "Km").replace(",", ".")
             binding.circleCenter.apply {
@@ -112,7 +107,8 @@ class HomeFragment :
             }
         }
     }
-    private fun getCurrentTime(){
+
+    private fun getCurrentTime() {
         val currentTime = Calendar.getInstance().time
         val formatTime = DateFormat.getDateInstance(DateFormat.FULL).format(currentTime)
         binding.tvToday.text = formatTime
@@ -133,6 +129,7 @@ class HomeFragment :
 
     override fun setupDataObserver() {
         super.setupDataObserver()
+        Log.d("888888", "setupDataObserver: ")
         getInfoUser()
         getSuccessStep()
     }
@@ -186,7 +183,9 @@ class HomeFragment :
                     binding.tvProgress.text = formatDisplayFloat((currentSteps / target) * 100, "%")
                     binding.goalSteps.text = formatGoal(goal.toInt())
                     binding.circleCenter.progressMax = target
-
+                    caloriesBurned = calculateCaloriesBurned(weight!!, stepLength!!/100,
+                        currentSteps.toInt(), gender.equals("Male"))
+                    binding.sumCalories.text = String.format("%.2f %s", caloriesBurned, "Kcal").replace(",", ".")
                 }
             }
             if (userId != null) {
@@ -200,7 +199,6 @@ class HomeFragment :
     }
 
     override fun onResume() {
-//        startForegroundService()
         super.onResume()
         if (sensor == null) {
             Snackbar.make(binding.root, "This device has no sensor", Snackbar.LENGTH_SHORT).show()
@@ -224,70 +222,77 @@ class HomeFragment :
 //        }
 //    }
 
-    private fun loadData() {
+    private fun loadPreviousTotalSteps() {
         val previousStep = MyApplication.loadData("previousStep", 0f)
         previousTotalSteps = previousStep
     }
 
     override fun onSensorChanged(p0: SensorEvent?) {
-        Log.d("onSensorChanged", "isRunning: $running ")
         if (running) {
-            val totalSteps = p0!!.values[0]
-            currentDay = DateHelper.name(day, month, year)
-
-            val lastSavedDate = DateHelper.getLastDate()
-            if (lastSavedDate != null && DateHelper.isSameDay(currentDay!!, lastSavedDate)) {
-                loadData()
-                shareDataViewModel.setCurrentStepCounter(totalSteps - previousTotalSteps)
-                shareDataViewModel.setTotalStep(totalSteps)
-                val currentStep = totalSteps.toInt() - previousTotalSteps.toInt()
-                viewModel.target.observe(viewLifecycleOwner) { target ->
-                    state = currentStep >= target
-                }
-            } else {
-                loadData()
-                val currentStep = totalSteps.toInt() - previousTotalSteps.toInt()
-                viewModel.target.observe(viewLifecycleOwner) { target ->
-                    state = currentStep > target
-                    val stepsData = StepsData(
-                        steps = currentStep.toFloat(),
-                        nameDay = currentDay,
+            val totalSteps = p0?.values?.get(0) ?: 0f
+            currentDayName = DateHelper.name(day, month, year)
+            val currentTime = Calendar.getInstance()
+            loadPreviousTotalSteps()
+            if (currentTime.get(Calendar.HOUR_OF_DAY) <= 23 && currentTime.get(Calendar.MINUTE) < 59 &&
+                currentTime.get(Calendar.SECOND) <59) {
+                val currentStep = totalSteps - previousTotalSteps
+                shareDataViewModel.setCurrentStepCounter(currentStep)
+            } else if (currentTime.get(Calendar.HOUR_OF_DAY) == 23 &&
+                currentTime.get(Calendar.MINUTE) == 59 &&
+                currentTime.get(Calendar.SECOND) == 59){
+                val lastDay = MyApplication.loadDataString("day", "")
+                val currentStep = totalSteps - previousTotalSteps
+                viewModel.target.observe(viewLifecycleOwner) {
+                    state = currentStep >= it
+                    val stepData = StepsData(
+                        steps = currentStep,
+                        nameDay = currentDayName,
                         day = day,
                         month = month,
                         year = year,
-                        distance = calculateDistance(currentStep.toFloat()),
-                        calories = calculateCaloriesCovered(currentStep.toFloat()),
-                        time = calculateTime(currentStep, calculateDistance(currentStep.toFloat())),
+                        distance = calculateDistance(currentStep),
+                        calories = caloriesBurned.toFloat(),
+                        time = calculateTime(currentStep.toInt(), calculateDistance(currentStep)),
                         state = state
                     )
-                    appViewModel.saveSteps(stepsData)
-                }
+                    appViewModel.saveSteps(stepData)
+                    currentDayName?.let {currentDay->
+                        MyApplication.saveDataString("day", currentDay)
+                    }
 
+                }
                 previousTotalSteps = totalSteps
                 MyApplication.saveData("previousStep", previousTotalSteps)
             }
-            DateHelper.saveLastDate(currentDay!!)
         } else {
-            // Xử lý khi `running` là false
-            val calendar = Calendar.getInstance()
-            val day = calendar[Calendar.DAY_OF_MONTH]
-            val month = calendar[Calendar.MONTH] + 1
-            val year = calendar[Calendar.YEAR]
-            val currentDay = DateHelper.name(day, month, year)
+            // handel when `running` = false
+            val currentTime = Calendar.getInstance()
+            if (currentTime.get(Calendar.HOUR_OF_DAY) == 23 &&
+                currentTime.get(Calendar.MINUTE) == 59 &&
+                currentTime.get(Calendar.SECOND) == 59
+            ) {
+                val totalSteps = p0?.values?.get(0) ?: 0f
+                val calendar = Calendar.getInstance()
+                val day = calendar[Calendar.DAY_OF_MONTH]
+                val month = calendar[Calendar.MONTH] + 1
+                val year = calendar[Calendar.YEAR]
+                val currentDay = DateHelper.name(day, month, year)
 
-            val stepsData = StepsData(
-                steps = 0f,
-                nameDay = currentDay,
-                day = day,
-                month = month,
-                year = year,
-                distance = calculateDistance(0f),
-                calories = calculateCaloriesCovered(0f),
-                time = calculateTime(0, calculateDistance(0f)),
-                state = false
-            )
-            appViewModel.saveSteps(stepsData)
-            DateHelper.saveLastDate(currentDay)
+                val stepsData = StepsData(
+                    steps = 0f,
+                    nameDay = currentDay,
+                    day = day,
+                    month = month,
+                    year = year,
+                    distance = calculateDistance(0f),
+                    calories = calculateCaloriesCovered(0f),
+                    time = calculateTime(0, calculateDistance(0f)),
+                    state = false
+                )
+                appViewModel.saveSteps(stepsData)
+                previousTotalSteps = totalSteps
+                MyApplication.saveData("previousStep", previousTotalSteps)
+            }
         }
     }
 
@@ -301,6 +306,17 @@ class HomeFragment :
 
     private fun calculateCaloriesCovered(steps: Float): Float {
         return ((steps * 0.033).toFloat())
+    }
+
+    private fun calculateCaloriesBurned(
+        weight: Double,
+        stepLength: Double,
+        steps: Int,
+        isMale: Boolean
+    ): Double {
+        val metValue = 3.5
+        val adjustedMetValue = if (isMale) metValue else metValue - 0.5
+        return (adjustedMetValue * weight * 3.5) / 200.0 * stepLength * steps / 1000.0
     }
 
     private fun calculateDistance(steps: Float): Float {
@@ -345,7 +361,6 @@ class HomeFragment :
         }
         bindingDialog.btnReset.setOnClickListener {
             showDialogAlert()
-            loadData()
             hidePopupWindow()
         }
 
@@ -415,7 +430,7 @@ class HomeFragment :
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
         when (key) {
             "previousStep" -> {
-                loadData()
+                loadPreviousTotalSteps()
             }
         }
     }
@@ -436,17 +451,8 @@ class HomeFragment :
     }
 
     override fun onDetach() {
-//        stopForegroundService()
+        stopForegroundService()
         sensorManager?.unregisterListener(this)
         super.onDetach()
     }
-
-    private fun popBackStackToA() {
-        if (!findNavController().popBackStack()) {
-//            Call finish on your Activity
-            requireActivity().finish()
-        }
-    }
-
-
 }

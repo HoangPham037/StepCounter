@@ -254,7 +254,7 @@ class TrackingService : LifecycleService() {
         val channel = NotificationChannel(
             NOTIFICATION_CHANNEL_TRACKING_ID,
             NOTIFICATION_CHANNEL_TRACKING_NAME,
-            IMPORTANCE_HIGH
+            IMPORTANCE_LOW
         )
         notificationManager.createNotificationChannel(channel)
     }

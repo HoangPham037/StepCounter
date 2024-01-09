@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.graphics.Color
 import android.graphics.drawable.VectorDrawable
 import android.os.Bundle
 import android.util.Log
@@ -80,7 +81,6 @@ class GpsFragment : BaseFragment<FragmentGpsBinding>(
         super.initEventOnClick()
         binding.btnToggleRun.setOnClickListener {
             requestPermission()
-            toggleRun()
         }
         binding.btnFinishRun.setOnClickListener {
             zoomToSeeWholeTrack()
@@ -254,6 +254,7 @@ class GpsFragment : BaseFragment<FragmentGpsBinding>(
                 Manifest.permission.ACCESS_COARSE_LOCATION,
                 Manifest.permission.ACCESS_FINE_LOCATION
             )
+            .setDialogTintColor(Color.parseColor("#1972e8"), Color.parseColor("#8ab6f5"))
             .onExplainRequestReason { scope, dinedList ->
                 scope.showRequestReasonDialog(
                     dinedList,
@@ -272,11 +273,7 @@ class GpsFragment : BaseFragment<FragmentGpsBinding>(
             }
             .request { allGranted, _, deniedList ->
                 if (allGranted) {
-                    Toast.makeText(
-                        requireContext(),
-                        "All permissions are granted",
-                        Toast.LENGTH_LONG
-                    ).show()
+                    toggleRun()
                 } else {
                     Toast.makeText(
                         requireContext(),

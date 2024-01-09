@@ -1,9 +1,13 @@
 package com.example.stepcount.ui.mainfragment
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.viewpager2.widget.ViewPager2
+import com.example.stepcount.Constant
+import com.example.stepcount.Constant.ACTION_MOVE_TO_MAIN_FRAGMENT
 import com.example.stepcount.Constant.ACTION_OPEN_HOME_FRAGMENT
 import com.example.stepcount.Constant.ACTION_SHOW_TRACKING_FRAGMENT
 import com.example.stepcount.Constant.IndexPage.indexFive
@@ -11,8 +15,10 @@ import com.example.stepcount.Constant.IndexPage.indexFour
 import com.example.stepcount.Constant.IndexPage.indexOne
 import com.example.stepcount.Constant.IndexPage.indexThree
 import com.example.stepcount.Constant.IndexPage.indexTwo
+import com.example.stepcount.Constant.KEY_USER_ID
 import com.example.stepcount.R
 import com.example.stepcount.base.BaseFragment
+import com.example.stepcount.containers.MyApplication
 import com.example.stepcount.databinding.FragmentMainBinding
 import com.google.android.material.navigation.NavigationBarView
 
@@ -70,8 +76,12 @@ class MainFragment : BaseFragment<FragmentMainBinding>(
                 }
             }
         })
+        appViewModel.registeredUserId.observe(viewLifecycleOwner) { userId ->
+            userId?.let {
+                MyApplication.saveIntData(KEY_USER_ID, it.toInt())
+            }
+        }
     }
-
     private fun getIntent(intent: Intent?) {
         when (intent?.action) {
             ACTION_SHOW_TRACKING_FRAGMENT -> {

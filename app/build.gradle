@@ -57,8 +57,6 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.1'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.3.1'
 
     //Koin dependencies
     implementation "org.koin:koin-android: $koin_version"
@@ -92,12 +90,6 @@ dependencies {
     implementation "com.github.bumptech.glide:glide:$glide_version"
     kapt "com.github.bumptech.glide:compiler:$glide_version"
 
-    // retrofit dependencies
-    def retrofit_version = "2.9.0"
-    def interceptor_version = "4.7.2"
-    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
-    implementation "com.squareup.okhttp3:logging-interceptor:$interceptor_version"
 
     def gson_version = "2.8.6"
     implementation "com.google.code.gson:gson:$gson_version"

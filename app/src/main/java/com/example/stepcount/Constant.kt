@@ -1,6 +1,9 @@
 package com.example.stepcount
 
 import android.graphics.Color
+import androidx.fragment.app.FragmentManager
+import com.example.stepcount.ui.mainfragment.MainFragment
+import com.example.stepcount.ui.profile.update_profile.RecommendFragment
 import java.text.NumberFormat
 import java.util.*
 
@@ -22,6 +25,8 @@ object Constant {
     const val ACTION_STOP_SERVICE = "ACTION_STOP_SERVICE"
     const val ACTION_SHOW_TRACKING_FRAGMENT = "ACTION_SHOW_TRACKING_FRAGMENT"
     const val ACTION_OPEN_HOME_FRAGMENT = "ACTION_OPEN_HOME_FRAGMENT"
+    const val ACTION_MOVE_TO_MAIN_FRAGMENT = "ACTION_MOVE_TO_MAIN_FRAGMENT"
+    const val ACTION_MOVE_TO_RECOMMEND_FRAGMENT = "ACTION_MOVE_TO_RECOMMEND_FRAGMENT"
 
     const val REQUEST_CODE_STEP_COUNT = 1001
     const val REQUEST_CODE_TRACKING = 1002
@@ -45,7 +50,16 @@ object Constant {
 
     //shareReference user id
     const val KEY_USER_ID = "user_id"
+    const val VALUE_USER_ID_DEFAULT = 0
     const val VALUE_DEFAULT = 0f
+
+    //shareReference day
+    const val KEY_DAY = "KEY_DAY"
+    const val VALUE_DEFAULT_DAY = 0
+
+    //shareReference previousTotalSteps
+    const val KEY_PREVIOUS_TOTAL_STEP = "KEY_DAY"
+    const val VALUE_DEFAULT_PREVIOUS_TOTAL_STEP = 0f
 
 
     const val KEY_STEPS = "KEY_STEPS"
@@ -59,5 +73,17 @@ object Constant {
         const val indexThree = 2
         const val indexFour =  3
         const val indexFive =  4
+    }
+
+    object NavigateToNameFragment {
+        const val FRAGMENT_PROFILE_NAME = "SettingProfileFragment"
+        const val FRAGMENT_YOUR_TARGET_NAME = "YourGoalFragment"
+        const val FRAGMENT_HISTORY_NAME = "HistoryFragment"
+        const val FRAGMENT_SPLASH_NAME = "SplashFragment"
+        const val FRAGMENT_MAIN_NAME = "MainFragment"
+        const val FRAGMENT_RECOMMEND_NAME = "RecommendFragment"
+        const val FRAGMENT_DETAILS_ACHIEVE_NAME = "DetailsAchieveFragment"
+        const val FRAGMENT_DAILY_STEP_DETAIL_NAME = "DailyStepsDetailFragment"
+        const val FRAGMENT_SUM_DISTANCE_DETAIL_NAME = "SumDistanceDetailFragment"
     }
 }

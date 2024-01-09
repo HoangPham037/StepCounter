@@ -68,7 +68,7 @@
 
                     <TextView
                         android:id="@+id/tv_sum_km"
-                        style="@style/TEXT_TITLE"
+                        style="@style/TEXT_COVER"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0" />
@@ -89,7 +89,7 @@
 
                     <TextView
                         android:id="@+id/tv_sum_kcal"
-                        style="@style/TEXT_TITLE"
+                        style="@style/TEXT_COVER"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0" />
@@ -110,7 +110,7 @@
 
                     <TextView
                         android:id="@+id/tv_sum_steps"
-                        style="@style/TEXT_TITLE"
+                        style="@style/TEXT_COVER"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0" />
@@ -131,7 +131,7 @@
 
                     <TextView
                         android:id="@+id/tv_time"
-                        style="@style/TEXT_TITLE"
+                        style="@style/TEXT_COVER"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/time_default" />

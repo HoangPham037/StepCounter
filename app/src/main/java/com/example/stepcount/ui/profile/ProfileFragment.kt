@@ -1,15 +1,16 @@
 package com.example.stepcount.ui.profile
 
-import android.view.View
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
-import com.example.stepcount.Constant.KEY_USER_ID
-import com.example.stepcount.Constant.VALUE_DEFAULT
-import com.example.stepcount.R
+import com.example.stepcount.Constant.NavigateToNameFragment.FRAGMENT_HISTORY_NAME
+import com.example.stepcount.Constant.NavigateToNameFragment.FRAGMENT_PROFILE_NAME
+import com.example.stepcount.Constant.NavigateToNameFragment.FRAGMENT_YOUR_TARGET_NAME
 import com.example.stepcount.base.BaseFragment
 import com.example.stepcount.containers.MyApplication
 import com.example.stepcount.databinding.FragmentProfileBinding
+import com.example.stepcount.extension.changeFragmentAddToBackStacks
+import com.example.stepcount.ui.profile.history.HistoryFragment
+import com.example.stepcount.ui.profile.profile_setting.SettingProfileFragment
+import com.example.stepcount.ui.profile.yourgoal.YourGoalFragment
 
 class ProfileFragment : BaseFragment<FragmentProfileBinding>(
     FragmentProfileBinding::inflate
@@ -18,25 +19,45 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(
     private var nightMode: Boolean = false
 
     companion object {
-        fun newInstance(): ProfileFragment{
-            return ProfileFragment()
+        private var instance: ProfileFragment? = null
+        fun newInstance(): ProfileFragment {
+            if (instance == null) {
+                instance = ProfileFragment()
+            }
+            return instance!!
         }
     }
+
     override fun initEventOnClick() {
         super.initEventOnClick()
         binding.layoutProfileSetting.setOnClickListener {
-            findNavController().navigate(R.id.action_mainFragment_to_settingProfileFragment)
+            activity?.let {
+                changeFragmentAddToBackStacks(
+                    SettingProfileFragment(),
+                    it.supportFragmentManager,
+                    FRAGMENT_PROFILE_NAME
+                )
+            }
         }
 
         binding.layoutYourGoal.setOnClickListener {
-            findNavController().navigate(R.id.action_mainFragment_to_yourGoalFragment)
-//            val actionYourGoalFragment =
-//                ProfileFragmentDirections.actionProfileFragmentToYourGoalFragment(goals)
-//            findNavController().navigate(actionYourGoalFragment)
+            activity?.let {
+                changeFragmentAddToBackStacks(
+                    YourGoalFragment(),
+                    it.supportFragmentManager,
+                    FRAGMENT_HISTORY_NAME
+                )
+            }
         }
 
         binding.layoutHistoryGPS.setOnClickListener {
-            findNavController().navigate(R.id.action_mainFragment_to_historyFragment2)
+            activity?.let {
+                changeFragmentAddToBackStacks(
+                    HistoryFragment(),
+                    it.supportFragmentManager,
+                    FRAGMENT_YOUR_TARGET_NAME
+                )
+            }
         }
 
         nightMode = MyApplication.loadDataBoolean("night", false)
